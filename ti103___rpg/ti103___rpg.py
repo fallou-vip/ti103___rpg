@@ -5,34 +5,34 @@
 
 import pygame
 
-
 HEIGHT = 16
 WIDTH = 24
-
 
 pygame.init()
 window = pygame.display.set_mode((36 * WIDTH, 36 * HEIGHT))
 window.fill((255, 255, 255))
 run = True
 
+import os  # Module os de python - Qui permet a Python de communiquer avec Windows
 
-import os           # Module os de python - Qui permet a Python de communiquer avec Windows
-                    # Systeme de fichier de Windows est accessible a travers le module 'os'
+# Systeme de fichier de Windows est accessible a travers le module 'os'
 print(os.getcwd())  # getcwd = get current working directory, autrement dit, la ou s'execute votre programme
 
 
-
 def charge_image():
-    image = pygame.image.load("ressources/tuiles.png").convert()
+    image = pygame.image.load("C:/Users/fallo/PycharmProjects/ti103___rpg/ti103___rpg/ressources/tuiles.png").convert()
     width, height = image.get_size()
     tuiles = []
-    for x in range(width//WIDTH):
-      ligne = []
-      for y in range(height//HEIGHT):
-        rect = (x * WIDTH, y * HEIGHT, WIDTH, HEIGHT)
-        ligne.append(image.subsurface(rect))
-      tuiles.append(ligne)
+    f = open("C:/Users/fallo/PycharmProjects/ti103___rpg/ti103___rpg/ressources/tuiles.png")
+
+    for x in range(width // WIDTH):
+        ligne = []
+        for y in range(height // HEIGHT):
+            rect = (x * WIDTH, y * HEIGHT, WIDTH, HEIGHT)
+            ligne.append(image.subsurface(rect))
+        tuiles.append(ligne)
     return tuiles
+
 
 while run:
     for event in pygame.event.get():
@@ -47,5 +47,3 @@ while run:
     pygame.display.flip()
 
 pygame.quit()
-
-
